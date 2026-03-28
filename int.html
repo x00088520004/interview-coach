@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>朝陽科技大學 企業管理系 ─ AI 面試教練</title>
+<meta name="description" content="朝陽科大企管系面試準備工具：題庫、自我介紹產生器、STAR回答法、面試攻略">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#122B4A;--navy-mid:#1B3D6B;--navy-light:#2A5190;
+  --gold:#C9A55A;--gold-light:#DBBF7A;--gold-dark:#A8873D;--gold-pale:#FBF5E8;
+  --white:#FFFFFF;--snow:#F8F9FC;--ice:#EEF1F7;
+  --text:#1A2236;--text-2:#4A5568;--text-3:#8896AA;
+  --border:#D8DDE8;--border-light:#E8ECF4;
+  --font:'Noto Sans TC',sans-serif;
+  --font-serif:'Noto Serif TC','Cormorant Garamond',serif;
+  --font-display:'Cormorant Garamond',serif;
+  --radius:10px;--radius-lg:18px;--radius-xl:24px;
+  --shadow:0 2px 16px rgba(18,43,74,.07);
+  --shadow-lg:0 12px 40px rgba(18,43,74,.12);
+  --shadow-gold:0 4px 20px rgba(201,165,90,.25);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--snow);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+.header{background:var(--navy);color:var(--white);position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(18,43,74,.3)}
+.header-top{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 28px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-logo{width:46px;height:46px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;background:rgba(201,165,90,.1);flex-shrink:0}
+.brand-text h1{font-family:var(--font-serif);font-size:19px;font-weight:700;letter-spacing:1px;line-height:1.3}
+.brand-text h1 .gold{color:var(--gold)}
+.brand-sub{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:2px;font-weight:400;margin-top:1px}
+.header-badge{padding:6px 16px;border:1px solid rgba(201,165,90,.4);border-radius:20px;font-size:12px;color:var(--gold-light);font-weight:500;letter-spacing:.5px;display:none}
+@media(min-width:640px){.header-badge{display:block}}
+
+.nav-bar{background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 20px;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-tab{flex-shrink:0;padding:14px 22px;font-size:14px;font-weight:500;color:rgba(255,255,255,.5);cursor:pointer;transition:all .25s ease;border-bottom:2px solid transparent;white-space:nowrap;display:flex;align-items:center;gap:7px;letter-spacing:.3px}
+.nav-tab:hover{color:rgba(255,255,255,.85)}
+.nav-tab.active{color:var(--gold-light);border-bottom-color:var(--gold)}
+.nav-tab .ico{font-size:15px}
+
+.main{max-width:1140px;margin:0 auto;padding:28px 20px 80px}
+.page{display:none;animation:pageIn .5s ease}
+.page.active{display:block}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 50%,var(--navy-light) 100%);border-radius:var(--radius-xl);padding:56px 40px 52px;color:var(--white);text-align:center;margin-bottom:32px}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 300px at 20% 80%,rgba(201,165,90,.12),transparent),radial-gradient(ellipse 500px 400px at 85% 20%,rgba(42,81,144,.3),transparent);pointer-events:none}
+.hero::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='rgba(201,165,90,0.06)' stroke-width='.5'/%3E%3C/svg%3E");pointer-events:none}
+.hero>*{position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 20px;border:1px solid rgba(201,165,90,.35);border-radius:30px;font-size:13px;color:var(--gold-light);font-weight:500;margin-bottom:24px;letter-spacing:.5px;background:rgba(201,165,90,.08)}
+.hero h2{font-family:var(--font-serif);font-size:clamp(26px,4.5vw,42px);font-weight:900;line-height:1.35;margin-bottom:16px;letter-spacing:1px}
+.hero h2 .accent{background:linear-gradient(90deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{font-size:16px;color:rgba(255,255,255,.65);max-width:560px;margin:0 auto 36px;line-height:1.8}
+.hero-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;max-width:920px;margin:0 auto}
+.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:24px 18px;text-align:center;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);backdrop-filter:blur(4px)}
+.hero-card:hover{background:rgba(201,165,90,.12);border-color:rgba(201,165,90,.35);transform:translateY(-6px);box-shadow:var(--shadow-gold)}
+.hero-card .hc-icon{font-size:28px;margin-bottom:10px;display:block}
+.hero-card h3{font-size:15px;font-weight:700;margin-bottom:4px}
+.hero-card p{font-size:12px;color:rgba(255,255,255,.45);line-height:1.5}
+.counter-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.counter-pill{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
+.counter-pill strong{color:var(--gold-light);font-size:18px}
+
+.card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius-xl);padding:36px;margin-bottom:24px;transition:box-shadow .3s}
+.card:hover{box-shadow:var(--shadow)}
+.section-head{margin-bottom:28px;position:relative;padding-left:18px}
+.section-head::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:4px;border-radius:2px;background:linear-gradient(180deg,var(--gold),var(--navy-light))}
+.section-head h3{font-family:var(--font-serif);font-size:22px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.section-head p{font-size:14px;color:var(--text-2)}
+
+.form-row{display:flex;gap:16px;flex-wrap:wrap}
+.form-row>*{flex:1;min-width:220px}
+.form-group{margin-bottom:20px}
+.form-label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px;letter-spacing:.3px}
+.form-hint{font-size:12px;color:var(--text-3);margin-top:5px}
+input[type="text"],textarea,select{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:var(--radius);font-size:15px;font-family:var(--font);color:var(--text);background:var(--white);transition:all .25s;line-height:1.6}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,165,90,.15)}
+textarea{resize:vertical;min-height:100px}
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%234A5568'%3E%3Cpath d='M5 7L0 2h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border:none;border-radius:var(--radius);font-size:15px;font-weight:600;font-family:var(--font);cursor:pointer;transition:all .25s;letter-spacing:.3px}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--white);box-shadow:var(--shadow-gold)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(201,165,90,.35)}
+.btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text-2)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold-dark);background:var(--gold-pale)}
+.btn-block{width:100%;justify-content:center}
+.btn-sm{padding:9px 18px;font-size:13px}
+
+.chip-row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 18px;border:1.5px solid var(--border);border-radius:30px;font-size:13px;font-weight:500;cursor:pointer;transition:all .25s;color:var(--text-2)}
+.chip:hover{border-color:var(--navy-light);color:var(--navy)}
+.chip.on{background:var(--navy);color:var(--white);border-color:var(--navy)}
+
+.q-list{display:grid;gap:10px}
+.q-item{display:flex;align-items:flex-start;gap:16px;padding:20px 24px;background:var(--white);border:1.5px solid var(--border-light);border-radius:var(--radius-lg);cursor:pointer;transition:all .25s}
+.q-item:hover{border-color:var(--gold);box-shadow:var(--shadow);transform:translateX(4px)}
+.q-num{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;background:linear-gradient(135deg,var(--navy),var(--navy-mid));color:var(--gold-light)}
+.q-body{flex:1;min-width:0}
+.q-text{font-size:15px;font-weight:500;color:var(--text);line-height:1.6}
+.q-meta{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.q-tag{font-size:11px;padding:3px 10px;border-radius:10px;font-weight:500;background:var(--ice);color:var(--text-3)}
+.q-tag.cat{background:var(--gold-pale);color:var(--gold-dark)}
+.q-tag.diff-easy{background:#E8F5EE;color:#2E7D5B}
+.q-tag.diff-mid{background:#FFF8E6;color:#9A7B2E}
+.q-tag.diff-hard{background:#FCEAEA;color:#C53030}
+
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.tip-card{padding:28px 24px;border-radius:var(--radius-lg);border:1.5px solid var(--border-light);background:var(--white);transition:all .3s}
+.tip-card:hover{box-shadow:var(--shadow);border-color:var(--gold)}
+.tip-card .tip-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--navy);color:var(--gold-light);font-size:14px;font-weight:700;margin-bottom:14px}
+.tip-card h4{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.tip-card p{font-size:13px;color:var(--text-2);line-height:1.8}
+
+.intro-output{background:linear-gradient(135deg,var(--snow),var(--gold-pale));border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:32px;margin-top:24px;position:relative;font-size:15px;line-height:2;color:var(--text);white-space:pre-wrap}
+.intro-output::before{content:'\201C';position:absolute;top:10px;left:16px;font-family:var(--font-display);font-size:64px;color:var(--gold);opacity:.25;line-height:1}
+.intro-output .label{font-size:12px;font-weight:600;color:var(--gold-dark);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;display:block}
+
+.star-step{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--border-light)}
+.star-step:last-child{border:none}
+.star-letter{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--white)}
+.star-letter.s{background:var(--navy)}.star-letter.t{background:var(--navy-mid)}.star-letter.a{background:var(--gold-dark)}.star-letter.r{background:var(--gold)}
+.star-content h4{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:2px}
+.star-content p{font-size:13px;color:var(--text-2)}
+
+.rubric-table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;margin-top:16px}
+.rubric-table th{background:var(--navy);color:var(--gold-light);padding:12px 16px;text-align:left;font-weight:600}
+.rubric-table th:first-child{border-radius:var(--radius) 0 0 0}
+.rubric-table th:last-child{border-radius:0 var(--radius) 0 0}
+.rubric-table td{padding:12px 16px;border-bottom:1px solid var(--border-light);color:var(--text-2)}
+.rubric-table tr:last-child td:first-child{border-radius:0 0 0 var(--radius)}
+.rubric-table tr:last-child td:last-child{border-radius:0 0 var(--radius) 0}
+.rubric-table tr:hover td{background:var(--gold-pale)}
+
+.footer{text-align:center;padding:40px 20px 32px;font-size:12px;color:var(--text-3);line-height:1.8}
+.footer .gold-line{width:40px;height:3px;border-radius:2px;margin:0 auto 16px;background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+
+@media(max-width:640px){
+  .main{padding:16px 12px 60px}
+  .card{padding:24px 18px;border-radius:var(--radius-lg)}
+  .hero{padding:36px 20px 32px;border-radius:var(--radius-lg)}
+  .hero-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .hero-card{padding:18px 12px}
+  .header-top{padding:12px 16px}
+  .brand-text h1{font-size:16px}
+  .form-row{flex-direction:column;gap:0}
+  .form-row>*{min-width:100%}
+}
+.divider{border:none;border-top:1px solid var(--border-light);margin:28px 0}
+.mt-16{margin-top:16px}.mt-24{margin-top:24px}.mb-16{margin-bottom:16px}
+
+/* ══ CTA SECTION ══ */
+.cta-section{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 60%,var(--navy-light) 100%);
+  border-radius:var(--radius-xl);padding:52px 40px;
+  color:var(--white);text-align:center;margin:40px auto 0;max-width:1140px;
+}
+.cta-section::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 500px 300px at 80% 90%,rgba(201,165,90,.15),transparent),
+    radial-gradient(ellipse 400px 300px at 10% 20%,rgba(42,81,144,.25),transparent);
+  pointer-events:none;
+}
+.cta-section::after{
+  content:'';position:absolute;inset:0;opacity:.4;
+  background:url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='1.5' fill='rgba(201,165,90,0.12)'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.cta-section>*{position:relative;z-index:1}
+.cta-emoji{font-size:48px;margin-bottom:16px;display:block;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.cta-section h2{
+  font-family:var(--font-serif);font-size:clamp(22px,4vw,34px);
+  font-weight:900;line-height:1.4;margin-bottom:16px;
+}
+.cta-section h2 .gold-text{color:var(--gold-light)}
+.cta-msg{
+  font-size:16px;color:rgba(255,255,255,.7);
+  max-width:580px;margin:0 auto 28px;line-height:2;
+}
+.cta-cards{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  margin-bottom:32px;
+}
+.cta-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius-lg);padding:20px 24px;
+  max-width:260px;text-align:center;
+  transition:all .3s;
+}
+.cta-card:hover{background:rgba(201,165,90,.1);border-color:rgba(201,165,90,.3)}
+.cta-card .cc-icon{font-size:24px;margin-bottom:8px;display:block}
+.cta-card h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.cta-card p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.6}
+.cta-email-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 36px;border:none;border-radius:40px;
+  font-size:16px;font-weight:700;font-family:var(--font);
+  background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+  color:var(--white);cursor:pointer;
+  transition:all .3s;letter-spacing:.5px;
+  box-shadow:0 4px 24px rgba(201,165,90,.35);
+  text-decoration:none;
+}
+.cta-email-btn:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(201,165,90,.45)}
+.cta-email-sub{
+  font-size:13px;color:rgba(255,255,255,.45);margin-top:14px;
+}
+.cta-email-sub a{color:var(--gold-light);text-decoration:underline;text-underline-offset:2px}
+.cta-quote{
+  margin-top:32px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-size:14px;color:rgba(255,255,255,.4);
+  font-style:italic;line-height:1.8;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-top">
+    <div class="brand">
+      <div class="brand-logo">🎓</div>
+      <div class="brand-text">
+        <h1>朝陽科技大學 <span class="gold">企業管理系</span></h1>
+        <div class="brand-sub">INTERVIEW COACH ─ 面試練習系統</div>
+      </div>
+    </div>
+    <div class="header-badge">🆓 免費開源工具</div>
+  </div>
+  <nav class="nav-bar">
+    <div class="nav-inner">
+      <div class="nav-tab active" data-p="home"><span class="ico">🏠</span>首頁</div>
+      <div class="nav-tab" data-p="bank"><span class="ico">📚</span>面試題庫</div>
+      <div class="nav-tab" data-p="intro"><span class="ico">✨</span>自我介紹產生器</div>
+      <div class="nav-tab" data-p="tips"><span class="ico">💡</span>面試攻略</div>
+      <div class="nav-tab" data-p="star"><span class="ico">⭐</span>STAR 回答法</div>
+    </div>
+  </nav>
+</header>
+
+<div class="main">
+
+<!-- HOME -->
+<div id="p-home" class="page active">
+  <div class="hero">
+    <div class="hero-eyebrow">🏛️ 朝陽科技大學 ・ 企業管理系 專屬</div>
+    <h2>你的面試 <span class="accent">即戰力</span><br>從這裡開始準備</h2>
+    <p>針對個人申請、繁星推薦、特殊選才三大管道，<br>提供題庫瀏覽、自我介紹產生、STAR 回答框架與面試攻略。</p>
+    <div class="counter-row">
+      <div class="counter-pill"><strong>60+</strong> 精選考古題</div>
+      <div class="counter-pill"><strong>4</strong> 大題型分類</div>
+      <div class="counter-pill"><strong>3</strong> 大升學管道</div>
+    </div>
+    <div class="hero-grid mt-24">
+      <div class="hero-card" onclick="go('bank')"><span class="hc-icon">📚</span><h3>面試題庫</h3><p>企管系熱門考古題，按主題分類</p></div>
+      <div class="hero-card" onclick="go('intro')"><span class="hc-icon">✨</span><h3>自我介紹產生器</h3><p>填表即出稿，一鍵複製</p></div>
+      <div class="hero-card" onclick="go('tips')"><span class="hc-icon">💡</span><h3>面試攻略</h3><p>服裝、禮儀、心態全指南</p></div>
+      <div class="hero-card" onclick="go('star')"><span class="hc-icon">⭐</span><h3>STAR 回答法</h3><p>結構化回答的黃金框架</p></div>
+    </div>
+  </div>
+  <div class="card" style="border-left:4px solid var(--gold)">
+    <div style="display:flex;align-items:flex-start;gap:16px">
+      <div style="font-size:28px;flex-shrink:0">💡</div>
+      <div>
+        <strong style="color:var(--navy);font-size:15px">如何使用這個工具？</strong>
+        <p style="font-size:14px;color:var(--text-2);margin-top:6px;line-height:1.8">
+          ① 先到<strong>面試題庫</strong>瀏覽企管系常見考古題，了解出題方向<br>
+          ② 用<strong>自我介紹產生器</strong>，填入你的基本資料與亮點，自動產出面試稿<br>
+          ③ 學會<strong>STAR 回答法</strong>，讓每一題都有結構、有深度<br>
+          ④ 閱讀<strong>面試攻略</strong>，掌握服裝、禮儀、心態的最後細節
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BANK -->
+<div id="p-bank" class="page">
+  <div class="card">
+    <div class="section-head">
+      <h3>📚 企管系面試題庫</h3>
+      <p>精選 60+ 道考古題，涵蓋個人申請、繁星推薦、特殊選才｜點擊題目可展開回答提示</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">篩選主題</label>
+      <div class="chip-row" id="bankChips">
+        <div class="chip on" data-f="all">全部</div>
+        <div class="chip" data-f="自我認識">自我認識</div>
+        <div class="chip" data-f="動機志向">動機志向</div>
+        <div class="chip" data-f="企管專業">企管專業</div>
+        <div class="chip" data-f="時事分析">時事分析</div>
+        <div class="chip" data-f="情境應變">情境應變</div>
+        <div class="chip" data-f="經歷反思">經歷反思</div>
+      </div>
+    </div>
+    <div id="qList" class="q-list mt-16"></div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div id="p-intro" class="page">
+  <div class="card">
+    <div class="section-head">
+      <h3>✨ 自我介紹產生器</h3>
+      <p>填寫基本資料與亮點，系統自動為你組織一份面試用的自我介紹稿（約 1～2 分鐘）</p>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">你的姓名</label><input type="text" id="iName" placeholder="例：王小明"></div>
+      <div class="form-group"><label class="form-label">就讀高中</label><input type="text" id="iSchool" placeholder="例：台中一中"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">面試管道</label><select id="iChannel"><option value="個人申請">個人申請</option><option value="繁星推薦">繁星推薦</option><option value="特殊選才">特殊選才</option></select></div>
+      <div class="form-group"><label class="form-label">風格取向</label><select id="iStyle"><option value="穩重">穩重專業型</option><option value="親切">親切自然型</option><option value="故事">故事敘事型</option></select></div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">個人亮點經歷 <span style="color:var(--gold-dark)">*必填</span></label>
+      <textarea id="iExp" rows="4" placeholder="每行寫一項，例如：&#10;・校園社團副社長，帶領 20 人團隊辦活動&#10;・全國商業類科技藝競賽佳作&#10;・自主學習計畫：分析 7-11 行銷策略&#10;・參加商業模擬營，擔任 CEO 角色"></textarea>
+      <div class="form-hint">💡 先把想到的都寫上去，不用完美，系統會幫你組織</div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">為什麼想讀朝陽科大企管系？</label>
+      <textarea id="iWhy" rows="3" placeholder="用白話說就好，例如：從小看爸爸開餐廳，對經營管理很有興趣…"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">未來規劃（選填）</label>
+      <input type="text" id="iPlan" placeholder="例：大學期間考取企管相關證照，畢業後進入品牌行銷領域">
+    </div>
+    <button class="btn btn-gold btn-block" onclick="genIntro()">🪄 產生自我介紹</button>
+    <div id="introOut"></div>
+  </div>
+</div>
+
+<!-- TIPS -->
+<div id="p-tips" class="page">
+  <div class="card">
+    <div class="section-head"><h3>💡 面試攻略</h3><p>面試不只考知識，更考你的態度與臨場反應</p></div>
+    <div class="tips-grid">
+      <div class="tip-card"><div class="tip-num">1</div><h4>👔 服裝儀容</h4><p>乾淨整齊的半正式穿著即可。男生：素色襯衫＋長褲＋皮鞋。女生：襯衫或簡約上衣＋褲裝或及膝裙。避免過多配飾，整體給人「有精神、有準備」的感覺。</p></div>
+      <div class="tip-card"><div class="tip-num">2</div><h4>🚪 入場禮儀</h4><p>敲門後等候指示再進入，進門後面向教授微鞠躬說「老師好」。坐下前等教授示意。離開時起身說「謝謝老師」再鞠躬。全程保持自然微笑與眼神接觸。</p></div>
+      <div class="tip-card"><div class="tip-num">3</div><h4>🎯 回答原則</h4><p>每個回答控制在 1～2 分鐘。先講結論再展開細節（金字塔原則）。用具體事例取代空泛形容。不懂的問題誠實說「這部分我了解有限，但我的想法是…」。</p></div>
+      <div class="tip-card"><div class="tip-num">4</div><h4>🧠 心態準備</h4><p>面試不是考試，是讓教授認識你。不需要每題都有「標準答案」，重要的是展現思考過程、學習態度和對企管的熱忱。緊張是正常的，深呼吸放慢語速就好。</p></div>
+      <div class="tip-card"><div class="tip-num">5</div><h4>📋 必備準備</h4><p>① 熟讀自己的學習歷程檔案 ② 了解朝陽科大企管系的課程特色 ③ 準備 2～3 個想問教授的問題 ④ 練習自我介紹到可以自然地說出 ⑤ 關注近一個月的商業新聞。</p></div>
+      <div class="tip-card"><div class="tip-num">6</div><h4>⚠️ 常見地雷</h4><p>❌ 背稿式回答（聽起來很僵硬）❌ 說「沒有問題想問」❌ 批評其他學校或科系 ❌ 過度誇大經歷 ❌ 回答時東張西望或駝背 ❌ 手機忘記關靜音。</p></div>
+    </div>
+    <hr class="divider">
+    <div class="section-head"><h3>📊 面試評分面向</h3><p>了解教授在評什麼，才能對症下藥</p></div>
+    <div style="overflow-x:auto">
+    <table class="rubric-table">
+      <thead><tr><th>評分面向</th><th>說明</th><th>佔比參考</th></tr></thead>
+      <tbody>
+        <tr><td><strong>表達能力</strong></td><td>口條清晰、語速適當、邏輯連貫</td><td>25%</td></tr>
+        <tr><td><strong>學習動機</strong></td><td>對企管的了解與興趣、選系理由的真實性</td><td>25%</td></tr>
+        <tr><td><strong>人格特質</strong></td><td>領導力、團隊合作、主動性、抗壓性</td><td>20%</td></tr>
+        <tr><td><strong>專業潛力</strong></td><td>商業思維、分析能力、對時事的敏銳度</td><td>15%</td></tr>
+        <tr><td><strong>態度禮儀</strong></td><td>進退應對、自信不傲、謙遜不卑</td><td>15%</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<!-- STAR -->
+<div id="p-star" class="page">
+  <div class="card">
+    <div class="section-head"><h3>⭐ STAR 回答法</h3><p>面試最實用的回答框架 ─ 讓你的回答有故事、有結構、有深度</p></div>
+    <div class="star-step"><div class="star-letter s">S</div><div class="star-content"><h4>Situation 情境</h4><p>說明事情發生的背景。在什麼時候、什麼地方、你的角色是什麼？</p></div></div>
+    <div class="star-step"><div class="star-letter t">T</div><div class="star-content"><h4>Task 任務</h4><p>你面對什麼挑戰或被指派什麼任務？問題的核心是什麼？</p></div></div>
+    <div class="star-step"><div class="star-letter a">A</div><div class="star-content"><h4>Action 行動</h4><p>你具體做了什麼？用了什麼方法？重點說明「你」的貢獻，而不是「團隊」。</p></div></div>
+    <div class="star-step"><div class="star-letter r">R</div><div class="star-content"><h4>Result 結果</h4><p>最後的成果是什麼？你學到了什麼？用數字或具體事實來佐證。</p></div></div>
+
+    <hr class="divider">
+    <div class="section-head"><h3>📝 範例示範</h3><p>題目：「請描述一個你克服困難的經驗」</p></div>
+    <div style="background:var(--gold-pale);border-radius:var(--radius-lg);padding:24px;font-size:14px;line-height:2;color:var(--text)">
+      <strong style="color:var(--navy)">【S 情境】</strong>高二時我擔任商研社社長，接手一場校內創業競賽的籌辦工作。<br>
+      <strong style="color:var(--navy)">【T 任務】</strong>但開學後發現報名人數只有預期的三分之一，預算也被學校砍了 40%。<br>
+      <strong style="color:var(--navy)">【A 行動】</strong>我先逐班宣傳，設計 IG 限時動態吸引同學關注；同時與在地商家合作拉贊助，用「商家曝光 × 學生流量」的交換模式爭取到三家贊助。<br>
+      <strong style="color:var(--navy)">【R 結果】</strong>最後報名隊伍從 8 隊增加到 22 隊，活動滿意度達 92%。這個經歷讓我學到「資源不夠時，創意就是最大的資源」，也啟發了我對行銷策略的興趣。
+    </div>
+
+    <hr class="divider">
+    <div class="section-head"><h3>🏋️ 自己練習看看</h3><p>選一題來練習，用 STAR 框架寫下你的回答</p></div>
+    <div class="form-group"><label class="form-label">選擇題目</label>
+      <select id="starQ">
+        <option>請描述一個你克服困難的經驗</option>
+        <option>你最有成就感的一件事是什麼？</option>
+        <option>你有沒有團隊合作的經驗？遇到衝突怎麼處理？</option>
+        <option>你參加過什麼課外活動？對你有什麼影響？</option>
+        <option>你做過最有挑戰性的決定是什麼？</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">S — 情境</label><textarea rows="2" id="starS" placeholder="什麼時間、地點、背景？"></textarea></div>
+      <div class="form-group"><label class="form-label">T — 任務</label><textarea rows="2" id="starT" placeholder="面對什麼挑戰？"></textarea></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">A — 行動</label><textarea rows="2" id="starA" placeholder="你具體做了什麼？"></textarea></div>
+      <div class="form-group"><label class="form-label">R — 結果</label><textarea rows="2" id="starR" placeholder="成果與反思？"></textarea></div>
+    </div>
+    <button class="btn btn-gold btn-block" onclick="buildStar()">📋 組合成完整回答</button>
+    <div id="starOut"></div>
+  </div>
+</div>
+
+</div>
+
+<!-- ═══ CTA: 鼓勵 & 行動呼籲 ═══ -->
+<div class="cta-section" style="margin-left:20px;margin-right:20px">
+  <span class="cta-emoji">🌟</span>
+  <h2>嘿，準備面試的你<br>已經很棒了 <span class="gold-text">💛</span></h2>
+  <p class="cta-msg">
+    會找到這個頁面，代表你正在為自己的未來認真準備。<br>
+    不管結果如何，這份用心本身就值得被看見。<br>
+    朝陽企管系有一群很溫暖的老師和學長姐，<br>
+    隨時歡迎你來聊聊、問問題，我們都在 😊
+  </p>
+
+  <div class="cta-cards">
+    <div class="cta-card">
+      <span class="cc-icon">👩‍🏫</span>
+      <h4>師長諮詢</h4>
+      <p>系上老師樂意回答你對企管系的任何疑問，不用害羞！</p>
+    </div>
+    <div class="cta-card">
+      <span class="cc-icon">🧑‍🎓</span>
+      <h4>學長姐分享</h4>
+      <p>想知道企管系的真實生活？學長姐的經驗最真實！</p>
+    </div>
+    <div class="cta-card">
+      <span class="cc-icon">💬</span>
+      <h4>面試不緊張</h4>
+      <p>有任何面試上的擔心或困惑，寫信來，我們陪你聊</p>
+    </div>
+  </div>
+
+  <a href="mailto:ba@cyut.edu.tw?subject=你好，我想了解朝陽企管系！&body=老師好，我是今年準備申請朝陽科大企管系的高中生，想請教一些問題：%0A%0A（在這裡寫下你的問題吧！）%0A%0A感謝老師！" class="cta-email-btn">
+    ✉️ 寄信給我們聊聊 → ba@cyut.edu.tw
+  </a>
+  <p class="cta-email-sub">
+    不管是課程問題、面試準備、還是「企管系在學什麼」都可以問<br>
+    我們會盡快回覆你！也可以直接寄到 <a href="mailto:ba@cyut.edu.tw">ba@cyut.edu.tw</a>
+  </p>
+
+  <p class="cta-quote">
+    「每一個厲害的人，都曾經是一個緊張的面試生。」<br>
+    —— 朝陽企管系，等你來 ✨
+  </p>
+</div>
+
+<div class="footer">
+  <div class="gold-line"></div>
+  朝陽科技大學 企業管理系 ─ 面試練習系統<br>
+  <span style="font-size:11px">本工具為免費開源教學輔助工具，非官方招生系統 ｜ 有任何建議歡迎來信 <a href="mailto:ba@cyut.edu.tw" style="color:var(--gold-dark)">ba@cyut.edu.tw</a></span><br>
+  © 2026 Chaoyang University of Technology, Dept. of Business Administration
+</div>
+
+<script>
+document.querySelectorAll('.nav-tab').forEach(t=>{t.addEventListener('click',()=>go(t.dataset.p))});
+function go(p){
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.toggle('active',t.dataset.p===p));
+  document.querySelectorAll('.page').forEach(pg=>pg.classList.toggle('active',pg.id==='p-'+p));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('bankChips').addEventListener('click',e=>{
+  const c=e.target.closest('.chip');if(!c)return;
+  document.querySelectorAll('#bankChips .chip').forEach(x=>x.classList.remove('on'));
+  c.classList.add('on');renderBank(c.dataset.f);
+});
+
+const QS=[
+  {q:'請用一分鐘自我介紹',cat:'自我認識',d:'easy',hint:'運用 STAR 架構，聚焦 2~3 個與企管相關的亮點，結尾連結到申請動機。'},
+  {q:'你有什麼優缺點？',cat:'自我認識',d:'easy',hint:'優點用事例佐證，缺點要說明你如何改善，展現成長型思維。'},
+  {q:'高中三年最有成就感的一件事？',cat:'自我認識',d:'easy',hint:'選擇能展現領導力、解決問題或團隊合作能力的事件。'},
+  {q:'你覺得自己最大的特質是什麼？',cat:'自我認識',d:'easy',hint:'特質要與企管需要的能力呼應：溝通力、分析力、行動力等。'},
+  {q:'你的朋友會怎麼形容你？',cat:'自我認識',d:'easy',hint:'藉由他人觀點展現你的人際互動能力與自我認知。'},
+  {q:'請描述一個你克服困難的經驗',cat:'自我認識',d:'mid',hint:'用 STAR 法則，著重在你的行動與反思。'},
+  {q:'你高中時期最大的失敗是什麼？你怎麼面對？',cat:'自我認識',d:'mid',hint:'展現你的挫折復原力與學習能力，重點在「失敗後學到什麼」。'},
+  {q:'如果用一個物品形容自己，你會選什麼？',cat:'自我認識',d:'mid',hint:'創意題，重點不在答案而在你的思考邏輯和表達方式。'},
+
+  {q:'你為什麼選擇朝陽科大企管系？',cat:'動機志向',d:'easy',hint:'務必先查過系上課程、特色與師資。避免空泛的「有興趣」，說出具體吸引你的點。'},
+  {q:'你對企業管理的了解是什麼？',cat:'動機志向',d:'mid',hint:'用生活中的例子（社團經營、家庭事業）說明你的理解。'},
+  {q:'你有什麼未來的職涯規劃？',cat:'動機志向',d:'easy',hint:'短期（大學目標）→ 中期（畢業後 3~5 年）→ 長期，要和企管連結。'},
+  {q:'如果沒有錄取，你有什麼打算？',cat:'動機志向',d:'mid',hint:'展現你的決心但不偏執。可以提到備案，但讓教授感受到你對企管的持續熱情。'},
+  {q:'你對朝陽科大的了解有多少？',cat:'動機志向',d:'easy',hint:'提到學校的產學合作、實習機會、地理位置優勢、校友資源等。'},
+  {q:'你為什麼不選其他學校的企管系？',cat:'動機志向',d:'hard',hint:'正面表述朝陽的獨特優勢，不要貶低其他學校。'},
+  {q:'企管系課程中，你最期待學什麼？',cat:'動機志向',d:'mid',hint:'查詢課程地圖後回答。例如行銷管理、人力資源、策略管理。'},
+  {q:'你希望大學四年學到什麼能力？',cat:'動機志向',d:'easy',hint:'結合企管核心能力：決策、溝通、數據分析、團隊領導。'},
+
+  {q:'管理和領導有什麼不同？',cat:'企管專業',d:'mid',hint:'管理偏向制度與效率（做對事），領導偏向願景與影響力（做對的事）。'},
+  {q:'你認為一個好的領導者應該具備什麼特質？',cat:'企管專業',d:'easy',hint:'特質＋實例。你有哪些領導經驗可以呼應？'},
+  {q:'行銷和銷售有什麼不同？',cat:'企管專業',d:'mid',hint:'行銷是創造需求、建立品牌；銷售是促成交易。舉你觀察到的例子。'},
+  {q:'請分析一個你覺得成功的品牌或企業',cat:'企管專業',d:'mid',hint:'選你熟悉的品牌（如全聯、蝦皮），從產品、定價、通路、推廣分析。'},
+  {q:'如果給你 100 萬創業，你會做什麼？',cat:'企管專業',d:'hard',hint:'展現商業思維：目標客群、價值主張、獲利模式。不需要完美，重點在邏輯。'},
+  {q:'什麼是 SWOT 分析？請舉例',cat:'企管專業',d:'easy',hint:'Strengths / Weaknesses / Opportunities / Threats，用學校社團或知名企業舉例。'},
+  {q:'你對 ESG（企業永續）的看法是什麼？',cat:'企管專業',d:'mid',hint:'環境 E、社會 S、治理 G。舉出台灣企業的 ESG 案例。'},
+  {q:'數位轉型對傳統產業的影響？',cat:'企管專業',d:'hard',hint:'舉實例：傳統餐飲＋外送平台、傳統零售＋電商。'},
+  {q:'人力資源管理在企業中扮演什麼角色？',cat:'企管專業',d:'mid',hint:'從招募、培訓、績效、留任四面向說明，強調人才是企業最重要的資產。'},
+  {q:'請說明供應鏈管理的重要性',cat:'企管專業',d:'hard',hint:'可以用疫情期間缺料缺貨的例子來說明。'},
+  {q:'你覺得 AI 會如何改變企業管理？',cat:'企管專業',d:'mid',hint:'從行銷自動化、數據決策、客服機器人等角度切入。'},
+
+  {q:'最近有什麼商業新聞引起你的關注？',cat:'時事分析',d:'mid',hint:'準備 2~3 則近一個月的新聞。說出事件＋你的分析觀點。'},
+  {q:'你對台灣中小企業的未來有什麼看法？',cat:'時事分析',d:'hard',hint:'台灣 98% 是中小企業。可從數位轉型、國際化、接班問題切入。'},
+  {q:'社群媒體對品牌經營的影響？',cat:'時事分析',d:'mid',hint:'正面（低成本曝光、直接溝通）和反面（負評擴散、注意力碎片化）都要提到。'},
+  {q:'你怎麼看台灣的電商發展？',cat:'時事分析',d:'mid',hint:'蝦皮、momo、PChome 的競爭格局，直播帶貨、跨境電商趨勢。'},
+  {q:'少子化對企業會有什麼影響？',cat:'時事分析',d:'mid',hint:'勞動力短缺、消費市場萎縮、銀髮經濟崛起。'},
+  {q:'你認為永續發展和企業獲利能兼顧嗎？',cat:'時事分析',d:'hard',hint:'用實際案例說明（如 Patagonia、統一超商綠色計畫）。'},
+  {q:'全球通膨對台灣企業的影響？',cat:'時事分析',d:'hard',hint:'原物料上漲、消費緊縮、企業如何調整定價策略與成本結構。'},
+  {q:'你怎麼看 AI 對就業市場的衝擊？',cat:'時事分析',d:'mid',hint:'哪些工作受影響最大？企管人才需要什麼新能力？'},
+
+  {q:'如果你是一家餐廳的店長，生意突然變差了，你會怎麼做？',cat:'情境應變',d:'mid',hint:'先分析原因（外部 vs 內部），再提出解決方案。展現你的問題解決思維。'},
+  {q:'你要推出一款新飲料，你會怎麼規劃行銷策略？',cat:'情境應變',d:'mid',hint:'目標客群定位 → 產品特色 → 通路選擇 → 推廣方式（4P 架構）。'},
+  {q:'團隊中有人不配合，你怎麼處理？',cat:'情境應變',d:'mid',hint:'先了解原因、溝通協調、尋找共識。展現同理心與領導彈性。'},
+  {q:'如果客戶投訴產品有問題，你會怎麼處理？',cat:'情境應變',d:'easy',hint:'傾聽 → 道歉 → 了解問題 → 提出解決方案 → 追蹤後續。'},
+  {q:'公司要縮減預算，你負責的專案被砍了一半，你怎麼辦？',cat:'情境應變',d:'hard',hint:'重新排定優先順序、尋找替代資源、與主管溝通爭取。'},
+  {q:'你同時有兩個面試、一個報告要交，你怎麼安排時間？',cat:'情境應變',d:'easy',hint:'展現時間管理與優先排序能力。'},
+  {q:'如果面試官說「我覺得你不適合念企管」，你會怎麼回應？',cat:'情境應變',d:'hard',hint:'壓力測試題。保持冷靜、有禮貌地說明你的看法和決心。不要情緒化。'},
+  {q:'如果你被分配到一個完全不懂的任務，你會怎麼開始？',cat:'情境應變',d:'mid',hint:'展現學習力：蒐集資料、請教前輩、拆解問題、從小步驟開始。'},
+
+  {q:'你的社團或課外活動經驗帶給你什麼？',cat:'經歷反思',d:'easy',hint:'聚焦能力成長而不是事件本身。和企管能力連結。'},
+  {q:'你的學習歷程檔案中最驕傲的是哪一件？',cat:'經歷反思',d:'easy',hint:'選一件和企管最相關的，用 STAR 說明。'},
+  {q:'你的自主學習計畫是做什麼？學到了什麼？',cat:'經歷反思',d:'easy',hint:'自主學習要展現你的主動性與探究精神。'},
+  {q:'你有沒有打工或實習的經驗？',cat:'經歷反思',d:'easy',hint:'沒有也沒關係，可以用其他經驗替代。有的話著重在學到的管理觀察。'},
+  {q:'你參加過什麼比賽？過程中學到什麼？',cat:'經歷反思',d:'easy',hint:'過程比結果重要。遇到什麼挑戰？怎麼克服？'},
+  {q:'你做過最有挑戰性的決定是什麼？',cat:'經歷反思',d:'mid',hint:'說明決策的考量因素、過程與結果。'},
+  {q:'你有沒有跨領域學習的經驗？',cat:'經歷反思',d:'mid',hint:'例如理科生學行銷、參加商業營隊、結合科技與管理的專題。'},
+  {q:'你從你的家庭中學到什麼關於「管理」的事？',cat:'經歷反思',d:'mid',hint:'如果家人經商可以聊觀察，如果沒有可以從家庭溝通、分工角度切入。'},
+  {q:'高中期間你讀過哪些跟商管有關的書或文章？',cat:'經歷反思',d:'mid',hint:'準備 1~2 本書（如《從 A 到 A+》《精實創業》），說明核心觀點與你的收穫。'},
+];
+
+function renderBank(f='all'){
+  const list=document.getElementById('qList');
+  const arr=f==='all'?QS:QS.filter(x=>x.cat===f);
+  list.innerHTML=arr.map((it,i)=>`
+    <div class="q-item" onclick="this.querySelector('.q-hint').style.display=this.querySelector('.q-hint').style.display==='block'?'none':'block'">
+      <div class="q-num">${i+1}</div>
+      <div class="q-body">
+        <div class="q-text">${it.q}</div>
+        <div class="q-meta">
+          <span class="q-tag cat">${it.cat}</span>
+          <span class="q-tag diff-${it.d}">${it.d==='easy'?'⭐ 基礎':it.d==='mid'?'⭐⭐ 進階':'⭐⭐⭐ 挑戰'}</span>
+        </div>
+        <div class="q-hint" style="display:none;margin-top:12px;padding:14px 16px;background:var(--gold-pale);border-radius:var(--radius);font-size:13px;color:var(--text-2);line-height:1.8;border-left:3px solid var(--gold)">
+          💡 <strong>回答方向：</strong>${it.hint}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+renderBank();
+
+function genIntro(){
+  const n=document.getElementById('iName').value.trim();
+  const s=document.getElementById('iSchool').value.trim();
+  const ch=document.getElementById('iChannel').value;
+  const st=document.getElementById('iStyle').value;
+  const exp=document.getElementById('iExp').value.trim();
+  const why=document.getElementById('iWhy').value.trim();
+  const plan=document.getElementById('iPlan').value.trim();
+  if(!n||!exp){alert('請至少填寫姓名與個人亮點經歷');return;}
+  const exps=exp.split('\n').map(x=>x.replace(/^[・\-\*\s]+/,'')).filter(Boolean);
+  const top=exps.slice(0,3);
+  let opening='',body='',closing='';
+  if(st==='穩重'){
+    opening=`各位教授好，我是${n}，來自${s||'高中'}，今天非常榮幸能透過${ch}的機會，來到朝陽科技大學企業管理系的面試。`;
+  }else if(st==='親切'){
+    opening=`教授好！我是${n}，來自${s||'高中'}。很高興今天有這個機會來和老師們聊聊，為什麼我想成為朝陽企管系的一份子。`;
+  }else{
+    const hook=top[0]||'一段特別的經歷';
+    opening=`各位教授好，我是${n}。在我高中生涯中，有一段經歷深深影響了我——${hook}。這讓我開始思考，什麼是真正的「管理」，也因此我來到了今天的面試現場。`;
+  }
+  body='\n\n在高中期間，我累積了幾項重要的經歷：';
+  top.forEach((e,i)=>{
+    if(i===0)body+=`首先，${e}。這個過程讓我培養了溝通協調與解決問題的能力。`;
+    else if(i===1)body+=`此外，${e}。這段經歷讓我對企業經營有了更具體的認識。`;
+    else body+=`同時，${e}。這些多元的嘗試讓我確信管理是我想深耕的領域。`;
+  });
+  if(why){body+=`\n\n選擇朝陽科大企管系，是因為${why}。`;}
+  else{body+=`\n\n我選擇朝陽科大企管系，是因為系上強調實務與理論並重的教學方式，加上豐富的產學合作機會，我相信能在這裡將我的興趣轉化為專業能力。`;}
+  if(plan){closing=`\n\n展望未來，${plan}。`;}else{closing='\n\n';}
+  if(st==='穩重'){closing+=`希望教授能給我這個機會，讓我在朝陽企管系開啟我的管理學之路。謝謝教授。`;}
+  else if(st==='親切'){closing+=`我期待在朝陽企管系學習和成長，也希望能為系上帶來一些不一樣的活力。謝謝老師們！`;}
+  else{closing+=`從那段經歷開始的好奇心，一路帶我來到了這裡。我準備好了，期待在朝陽企管系寫下下一章。謝謝教授。`;}
+  const full=opening+body+closing;
+  const chars=full.length;const mins=Math.round(chars/200*10)/10;
+  document.getElementById('introOut').innerHTML=`
+    <div class="intro-output mt-24"><span class="label">${st}型 ─ 自我介紹稿</span>${full}</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:8px">
+      <span style="font-size:13px;color:var(--text-3)">📝 ${chars} 字 ｜ 預估 ${mins} 分鐘</span>
+      <button class="btn btn-outline btn-sm" onclick="copyText(this,'introOut')">📋 複製全文</button>
+    </div>
+    <div class="card mt-16" style="border-left:3px solid var(--gold);background:var(--gold-pale)">
+      <strong style="color:var(--navy);font-size:14px">⚡ 面試官可能追問的問題</strong>
+      <ul style="margin-top:8px;padding-left:20px;font-size:14px;color:var(--text-2);line-height:2">
+        <li>你提到的「${top[0]||'經歷'}」，能不能具體說明你的角色和貢獻？</li>
+        <li>你對企管系哪門課最有興趣？為什麼？</li>
+        <li>你認為企管人才最需要的核心能力是什麼？</li>
+      </ul>
+    </div>`;
+}
+
+function buildStar(){
+  const q=document.getElementById('starQ').value;
+  const s=document.getElementById('starS').value.trim();
+  const t=document.getElementById('starT').value.trim();
+  const a=document.getElementById('starA').value.trim();
+  const r=document.getElementById('starR').value.trim();
+  if(!s&&!t&&!a&&!r){alert('請至少填寫一個欄位');return;}
+  const parts=[];
+  if(s)parts.push(s);if(t)parts.push(t);if(a)parts.push(a);if(r)parts.push(r);
+  document.getElementById('starOut').innerHTML=`
+    <div class="intro-output mt-24"><span class="label">STAR 完整回答 ─ ${q}</span>${parts.join('。\n\n')}。</div>
+    <div style="text-align:right;margin-top:12px"><button class="btn btn-outline btn-sm" onclick="copyText(this,'starOut')">📋 複製</button></div>`;
+}
+
+function copyText(btn,id){
+  const el=document.getElementById(id).querySelector('.intro-output');
+  if(!el)return;
+  navigator.clipboard.writeText(el.innerText).then(()=>{btn.textContent='✅ 已複製';setTimeout(()=>btn.textContent='📋 複製全文',2000);});
+}
+</script>
+</body>
+</html>
